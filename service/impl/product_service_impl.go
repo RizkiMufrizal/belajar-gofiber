@@ -49,14 +49,14 @@ func (service *productServiceImpl) Delete(ctx context.Context, id int32) {
 }
 
 func (service *productServiceImpl) FindById(ctx context.Context, id int32) model.ProductModel {
-	productCache, err := service.ProductRepository.FindById(ctx, id)
+	product, err := service.ProductRepository.FindById(ctx, id)
 	exception.PanicLogging(err)
 
 	return model.ProductModel{
-		Id:       productCache.Id,
-		Name:     productCache.Name,
-		Price:    productCache.Price,
-		Quantity: productCache.Quantity,
+		Id:       product.Id,
+		Name:     product.Name,
+		Price:    product.Price,
+		Quantity: product.Quantity,
 	}
 }
 
